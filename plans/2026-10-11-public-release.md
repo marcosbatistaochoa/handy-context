@@ -75,8 +75,13 @@ Lessons applied: `2026-09-23 [install]` (scanner installs go to the user as one 
 
 ## Progress
 
-Now: U4 (README, LICENSE, SECURITY), then the summary review file, then U5.
+Now: done except the Framework re-clone, which is `ai-system` STATE 2.2 (only a session on the Framework can do it).
 
 - 2026-10-11 U1 mirror made; refs identical to the remote.
 - 2026-10-11 U2 gitleaks history 0, tree 0 tracked (2 hits in ignored files); bandit 16 low/false; semgrep 0 of 21 files; pip-audit 0; 8 images clean; localhost finding confirmed by failing tests.
 - 2026-10-11 U3 localhost fix 334fe16; scrub done, 94 tests pass.
+- 2026-10-11 U4 README setup, LICENSE, SECURITY.md; fresh clone: pip install -e . failed, fixed in pyproject; 94 pass; fail open 2.1 s; browser request 403 (A5, A6).
+- 2026-10-11 U5 old repo renamed handy-context-old (private); new public repo, secret scanning and push protection on before the push; ruleset protect-main (no force push, no deletion); author-email rules refused by GitHub (422). Fresh clone: one commit, noreply author and committer, gitleaks 0, privacy grep empty, license MIT (A1, A3, A4, A7).
+- 2026-10-11 A9 live helper restarted with install.ps1, browser request 403.
+- 2026-10-11 U6 lessons in ai-system docs/research/2026-10-11-security-review-lessons.md, playbook lesson 2026-10-11 [publish], STATE 2.2 re-clone step (A8).
+- 2026-10-11 after restart: eval_cleanup --pace 8 on Groq: cleanup 37/40 (3 sentence-splitting cases), edit 21/21, not_edit 22/22, false edits 0, median 457 ms.
