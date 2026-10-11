@@ -1,0 +1,7 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+# graphify's map of this repo, rebuilt per machine (ai-system docs/graphify.md)
+graphify-out/

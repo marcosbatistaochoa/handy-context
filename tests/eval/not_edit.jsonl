@@ -1,0 +1,22 @@
+{"id": "note-report", "in": "add a note at the end of the report about the budget", "target": "Here is the plan for Q3.", "mode": "dictate", "has": ["note at the end of the report"], "ci": true}
+{"id": "change-schedule", "in": "we need to change the schedule for next week", "target": "The team is busy.", "mode": "dictate", "has": ["change the schedule"], "ci": true}
+{"id": "continue-sentence", "in": "and then we can review it on monday", "target": "Let's finish the draft first.", "mode": "dictate", "has": ["review it on Monday"]}
+{"id": "delete-files", "in": "please delete the old files from the server", "target": "Cleanup task for today.", "mode": "dictate", "has": ["delete the old files"], "ci": true}
+{"id": "make-shorter-topic", "in": "can you make the video shorter for the client", "target": "Feedback from the call:", "mode": "dictate", "has": ["make the video shorter"], "ci": true}
+{"id": "replace-tires", "in": "remember to replace the tires before the trip", "target": "Car stuff.", "mode": "dictate", "has": ["replace the tires"], "ci": true}
+{"id": "translate-topic", "in": "she will translate the contract into spanish", "target": "Update on legal.", "mode": "dictate", "has": ["translate the contract"], "ci": true}
+{"id": "plain-next", "in": "the weather was nice so we went for a walk", "target": "Yesterday was good.", "mode": "dictate", "has": ["went for a walk"]}
+{"id": "fix-bug", "in": "i fixed the bug in the login page", "target": "Status:", "mode": "dictate", "has": ["fixed the bug"]}
+{"id": "add-milk", "in": "add milk and eggs to the list", "target": "Groceries for the weekend.", "mode": "dictate", "has": ["milk and eggs"], "ci": true}
+{"id": "capital-topic", "in": "we should capitalize on this momentum", "target": "Sales are up.", "mode": "dictate", "has": ["capitalize on this momentum"]}
+{"id": "question-to-person", "in": "tell sarah to make it more formal for the board", "target": "Here is my draft email to the board.", "mode": "dictate", "has": ["more formal"], "ci": true}
+{"id": "remove-person", "in": "remove john from the invite list", "target": "Party planning.", "mode": "dictate", "has": ["John from the invite list"]}
+{"id": "end-sentence", "in": "at the end of the day it worked out", "target": "It was a long week.", "mode": "dictate", "has": ["end of the day"], "ci": true}
+{"id": "new-paragraph-content", "in": "the second point is about hiring", "target": "The first point is about budget.", "mode": "dictate", "has": ["second point is about hiring"], "ci": true}
+{"id": "pointer-it", "in": "it was a long day but we got it done", "target": "Update for Friday.", "mode": "dictate", "has": ["got it done"]}
+{"id": "pointer-that", "in": "that is exactly what i told the client", "target": "They want a refund.", "mode": "dictate", "has": ["told the client"], "ci": true}
+{"id": "pointer-end", "in": "i think this is the end of the project", "target": "We shipped the last feature.", "mode": "dictate", "has": ["end of the project"], "ci": true}
+{"id": "shared-word", "in": "the refund should arrive next week", "target": "They want a refund.", "mode": "dictate", "has": ["refund should arrive next week"], "ci": true}
+{"id": "shared-word-verb", "in": "change is hard but the team is ready", "target": "The team changed tools.", "mode": "dictate", "has": ["team is ready"], "ci": true}
+{"id": "instead-content", "in": "instead we went to the beach", "target": "We planned to hike.", "mode": "dictate", "has": ["went to the beach"], "ci": true}
+{"id": "please-content", "in": "please send me the slides", "target": "Thanks for the meeting.", "mode": "dictate", "has": ["send me the slides"], "ci": true}

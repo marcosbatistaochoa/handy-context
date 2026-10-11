@@ -1,0 +1,40 @@
+{"id": "filler-um", "in": "um so i think we should uh move the meeting to thursday", "has": ["move the meeting to Thursday"], "not": ["um", "uh"]}
+{"id": "filler-like", "in": "it was like really hard to like find the file", "has": ["really hard to find the file"], "not": ["like"]}
+{"id": "like-verb-kept", "in": "i like the new design a lot", "has": ["I like the new design a lot"]}
+{"id": "like-compare-kept", "in": "it looks like a bug in the parser", "has": ["looks like a bug in the parser"]}
+{"id": "stacked-and", "in": "i opened the app and and then and it crashed", "has": ["crashed"], "not": ["and and", "then and"]}
+{"id": "and-run-on", "in": "we went to the store and we got milk and then we went home and we cooked dinner", "has": ["milk"], "min_sentences": 2}
+{"id": "you-know", "in": "the thing is you know we never tested it on windows", "has": ["we never tested it on Windows"], "not": ["you know"]}
+{"id": "i-mean-filler", "in": "it's fine i mean it works most of the time", "has": ["works most of the time"]}
+{"id": "quote-said", "in": "he said i'll be there at five", "has": ["\"I'll be there at five"]}
+{"id": "quote-told-me", "in": "she told me we are not shipping this friday so we need a new plan", "has": ["We are not shipping this Friday", "new plan"]}
+{"id": "quote-explicit", "in": "the sign said quote no parking end quote", "has": ["\"No parking"]}
+{"id": "quote-asked", "in": "my boss asked can you send the report by monday", "has": ["\"Can you send the report by Monday?\""]}
+{"id": "quote-thought", "in": "and i thought this is never going to work", "has": ["\"This is never going to work"]}
+{"id": "quote-word", "in": "you keep using the word synergy and i don't think it means anything", "has": ["\"synergy"]}
+{"id": "question", "in": "can you check if the server is up", "has": ["Can you check if the server is up?"]}
+{"id": "question-embedded-not", "in": "i wonder if the server is up", "has": ["I wonder if the server is up."]}
+{"id": "two-sentences", "in": "the build passed the tests failed", "has": ["The build passed", "the tests failed"], "min_sentences": 2, "ci": true}
+{"id": "self-correct", "in": "let's meet at five no sorry six", "has": ["six"], "not": ["five", "sorry"]}
+{"id": "self-correct-2", "in": "send it to john actually send it to maria", "has": ["Maria"], "not": ["John"]}
+{"id": "false-start", "in": "i was going to i want to rewrite the intro", "has": ["I want to rewrite the intro"]}
+{"id": "spoken-comma", "in": "dear sam comma thanks for the update", "has": ["Dear Sam,", "thanks for the update"], "not": ["comma"]}
+{"id": "new-line", "in": "first item new line second item", "has": ["\n"], "not": ["new line"]}
+{"id": "numbers", "in": "we need twenty five chairs and three tables", "has": ["25 chairs"]}
+{"id": "time", "in": "the call is at three thirty pm", "has": ["3:30"]}
+{"id": "list", "in": "we need eggs milk bread and butter", "has": ["eggs, milk, bread, and butter"]}
+{"id": "question-not-answered", "in": "what is the capital of france", "has": ["What is the capital of France?"], "not": ["Paris"]}
+{"id": "request-not-done", "in": "write me a poem about the sea", "has": ["Write me a poem about the sea"], "max_len": 60}
+{"id": "plain-kept", "in": "the meeting went well and everyone agreed on the budget", "has": ["The meeting went well", "everyone agreed on the budget."]}
+{"id": "apostrophes", "in": "its not my fault the dogs bowl was empty", "has": ["It's not my fault", "dog's bowl"]}
+{"id": "proper-nouns", "in": "i flew from new york to san francisco on united", "has": ["New York", "San Francisco", "United"]}
+{"id": "exclaim-kept-meaning", "in": "oh wow that's amazing", "has": ["amazing"], "not": ["oh wow, that's amazing?"]}
+{"id": "basically-filler", "in": "so basically the api is like down again", "has": ["the API is down again"], "not": ["like"], "ci": true}
+{"id": "and-start", "in": "and then and then the screen went black", "has": ["the screen went black"], "not": ["and then and then"]}
+{"id": "uh-mid", "in": "the file is in the uh downloads folder", "has": ["in the Downloads folder"], "not": ["uh"], "ci": true}
+{"id": "es-plain", "in": "eh bueno mañana tengo que llamar al dentista para cambiar la cita", "has": ["mañana", "dentista", "cita"], "not": ["tomorrow", "dentist", "appointment", "eh"], "ci": true}
+{"id": "es-english-screen", "in": "oye puedes mandarme el informe antes del viernes porque lo necesito para la reunión", "visible": "Hi Kate, thanks for the update. Let me know when the budget review is ready. Best, Marcos", "has": ["viernes", "informe", "reunión"], "not": ["Friday", "report", "meeting"], "ci": true}
+{"id": "es-fillers", "in": "este pues creo que eh deberíamos hablar con el equipo hoy antes de las cinco", "has": ["equipo", "hoy"], "not": ["team", "today", "eh"], "ci": true}
+{"id": "es-quote", "in": "y ella me dijo nos vemos a las cinco en la oficina", "has": ["nos vemos a las cinco"], "not": ["see you", "five"], "ci": true}
+{"id": "air-word-kept", "in": "can you open the window and let some fresh air in", "has": ["fresh air"], "not": ["AYRE"]}
+{"id": "long-dictation", "in": "okay so here is the update for the team um we finished the first part of the migration on monday and it went mostly fine there were two problems the first one was that the old export script kept timing out on the large tables so we split it into smaller batches and that fixed it the second problem was that a few records had dates in the wrong format and uh we had to clean those up by hand which took most of tuesday after that we ran the full comparison between the old system and the new one and the numbers matched except for three rows which we are still looking into the plan for this week is to finish those three rows move the reports over and then turn off the old system on friday if nothing else comes up i would also like everyone to test their own reports on the new system before thursday so we catch anything strange before the switch and if you find a problem please write it down with the report name and what looked wrong and send it to me directly thanks everyone for the hard work on this", "has": ["Monday", "Friday", "three rows"], "not": ["um", "uh"], "min_sentences": 6, "ci": true}
