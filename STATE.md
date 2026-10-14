@@ -58,7 +58,15 @@ None.
 
 ## Open questions
 
-None.
+Loose ends carried over from the closed `ai-system` thread `handy-context`
+(2026-10-14):
+
+- The learner wrote 0 rows to `corrections.jsonl` after 90 dictations
+  (2026-10-07). It only sees a hand fix at the next dictation in the same
+  field; why it saw none was never investigated.
+- The README does not describe spoken edits (Edit Mode), learning or the
+  context caps.
+- The first dictation in a freshly opened browser may miss context.
 
 ## Dead ends and mistakes
 

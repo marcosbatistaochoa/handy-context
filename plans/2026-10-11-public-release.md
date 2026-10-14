@@ -75,7 +75,7 @@ Lessons applied: `2026-09-23 [install]` (scanner installs go to the user as one 
 
 ## Progress
 
-Now: done except the Framework re-clone, which is `ai-system` STATE 2.2 (only a session on the Framework can do it).
+Now: done. Framework re-cloned 2026-10-13 (`ai-system` STATE 2.2); plan closed 2026-10-14.
 
 - 2026-10-11 U1 mirror made; refs identical to the remote.
 - 2026-10-11 U2 gitleaks history 0, tree 0 tracked (2 hits in ignored files); bandit 16 low/false; semgrep 0 of 21 files; pip-audit 0; 8 images clean; localhost finding confirmed by failing tests.
