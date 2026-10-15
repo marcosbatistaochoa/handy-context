@@ -29,6 +29,13 @@ HELPER_KEY = "f13"
 # buffer keeps recording after release so the last word is not cut
 # (managers/audio.rs).
 EXTRA_BUFFER_MS = 200
+# A dictation with no text box focused was lost (the user, 2026-10-15). Handy
+# 0.9.8 writes the pasted text to the clipboard after pasting when this is set
+# (clipboard.rs), so it can be pasted again by hand.
+CLIPBOARD_HANDLING = "copy_to_clipboard"
+# Handy's History tab keeps this many dictations, each with its ~1 MB recording
+# (recording_retention_period "preserve_limit"). Handy's default is 5.
+HISTORY_LIMIT = 100
 
 
 def handy_running() -> bool:
@@ -49,6 +56,10 @@ def check(s: dict, base_url: str, right_alt: bool = False) -> list[str]:
         problems.append("always_on_microphone is on: the mic stays open while idle")
     if s.get("extra_recording_buffer_ms", 0) < EXTRA_BUFFER_MS:
         problems.append(f"extra_recording_buffer_ms is under {EXTRA_BUFFER_MS}: the last word is cut at release")
+    if s.get("clipboard_handling") != CLIPBOARD_HANDLING:
+        problems.append("clipboard_handling does not keep the dictation on the clipboard")
+    if s.get("history_limit", 0) < HISTORY_LIMIT:
+        problems.append(f"history_limit is under {HISTORY_LIMIT}: the History tab drops older dictations")
     if not s.get("post_process_enabled"):
         problems.append("post-processing is off")
     if s.get("post_process_provider_id") != "custom":
@@ -93,6 +104,8 @@ def main() -> int:
 
     s["always_on_microphone"] = False
     s["extra_recording_buffer_ms"] = max(s.get("extra_recording_buffer_ms", 0), EXTRA_BUFFER_MS)
+    s["clipboard_handling"] = CLIPBOARD_HANDLING
+    s["history_limit"] = max(s.get("history_limit", 0), HISTORY_LIMIT)
     s["post_process_enabled"] = True
     s["post_process_provider_id"] = "custom"
     for p in s.setdefault("post_process_providers", []):
