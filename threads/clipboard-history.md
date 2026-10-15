@@ -14,7 +14,11 @@ Its copy button copies the raw transcript, not the helper's cleaned text
 Done: `configure_handy.py` sets and checks both (e88b55c). `--check` on the
 Framework flags both as not yet applied.
 
-Next: apply on the live Handy. Waiting on the user: restart Handy (5-10 s
-gap) or flip the two settings in Handy's Advanced page. Then decide whether
-History should show the cleaned text (needs a Handy fork; AGENTS.md says no
-fork). The Spectre picks it up at its next pull and `configure_handy.py`.
+Applied on the Framework 2026-10-15: Handy force-stopped, none left,
+`configure_handy.py` run, Handy restarted; one `handy.exe`, `--check` OK
+after the restart.
+
+The user chose to keep History as it is (raw text). No fork.
+
+Next: the Spectre picks it up at its next pull and `configure_handy.py`.
+Otherwise closed.
