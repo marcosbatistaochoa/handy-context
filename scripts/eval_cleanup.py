@@ -47,6 +47,8 @@ def check(case: dict, answer: str, mode: str | None = None) -> list[str]:
     for s in case.get("not", []):
         if re.search(r"(?<!\w)" + re.escape(s.lower()) + r"(?!\w)", answer.lower()):
             problems.append(f"still has {s!r}")
+    if case.get("plain") and re.search(r"^\s*[-*•]\s", answer, re.MULTILINE):
+        problems.append("made a list the speaker did not dictate")
     if "min_sentences" in case:
         n = len(re.findall(r"[.!?](\s|$)", answer))
         if n < case["min_sentences"]:
@@ -76,6 +78,7 @@ def run_case(cfg, case: dict, empty: Dictionary) -> tuple[str, str | None, float
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--set", choices=SETS)
+    ap.add_argument("--id", action="append", help="run only the case with this id (repeatable)")
     ap.add_argument("--show", action="store_true")
     ap.add_argument("--routed", action="store_true", help="run cleanup cases with a last dictation present")
     ap.add_argument("--pace", type=float, default=0.0,
@@ -94,6 +97,8 @@ def main() -> int:
         if not path.exists():
             continue
         cases = [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
+        if args.id:
+            cases = [c for c in cases if c["id"] in args.id]
         passed = 0
         for case in cases:
             time.sleep(args.pace)

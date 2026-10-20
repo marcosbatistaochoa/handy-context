@@ -25,6 +25,8 @@
 {"id": "list", "in": "we need eggs milk bread and butter", "has": ["eggs, milk, bread, and butter"]}
 {"id": "question-not-answered", "in": "what is the capital of france", "has": ["What is the capital of France?"], "not": ["Paris"]}
 {"id": "request-not-done", "in": "write me a poem about the sea", "has": ["Write me a poem about the sea"], "max_len": 60}
+{"id": "spoken-order-kept", "in": "i want you to make bullet points for my meeting later today first we need to review the budget second send the invite to the team third book a room", "has": ["I want you to make bullet points for my meeting later today.", "budget", "invite", "room"], "plain": true, "ci": true}
+{"id": "spoken-order-kept-short", "in": "please summarize this thread for me and then send it to kate", "has": ["summarize this thread", "send it to Kate"], "ci": true}
 {"id": "plain-kept", "in": "the meeting went well and everyone agreed on the budget", "has": ["The meeting went well", "everyone agreed on the budget."]}
 {"id": "apostrophes", "in": "its not my fault the dogs bowl was empty", "has": ["It's not my fault", "dog's bowl"]}
 {"id": "proper-nouns", "in": "i flew from new york to san francisco on united", "has": ["New York", "San Francisco", "United"]}
