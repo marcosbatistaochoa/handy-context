@@ -77,6 +77,77 @@ def band_levels(samples, coeffs=None) -> list[float]:
     return out
 
 
+class Keepalive:
+    """Inaudible hiss (about -80 dBFS) to the default output while recording.
+
+    Bluetooth AirPods stop sending mic audio about 2.6 s into a Handy recording
+    when nothing plays to them; music, or this hiss, keeps them going (tested
+    2026-10-28: 2.61 s kept without, full length with). `stop` lets it run on
+    `tail_s` more so Handy's 200 ms extra buffer is covered.
+    """
+
+    tail_s = 1.5
+
+    def __init__(self) -> None:
+        self._until = 0.0
+        self._thread: threading.Thread | None = None
+
+    def start(self) -> None:
+        self._until = float("inf")
+        if self._thread and self._thread.is_alive():
+            return
+        self._thread = threading.Thread(target=self._run, name="hc-keepalive", daemon=True)
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._until = time.monotonic() + self.tail_s
+
+    def _run(self) -> None:
+        try:
+            self._play()
+        except Exception:
+            pass  # no output device: nothing to keep alive
+
+    def _play(self) -> None:
+        import random
+
+        winmm = ctypes.windll.winmm
+        H, P, U = ctypes.c_void_p, ctypes.c_void_p, wintypes.UINT
+        winmm.waveOutOpen.argtypes = [ctypes.POINTER(ctypes.c_void_p), U, P, P, P, wintypes.DWORD]
+        for name in ("waveOutPrepareHeader", "waveOutWrite", "waveOutUnprepareHeader"):
+            getattr(winmm, name).argtypes = [H, P, U]
+        for name in ("waveOutReset", "waveOutClose"):
+            getattr(winmm, name).argtypes = [H]
+        fmt = WAVEFORMATEX(1, 1, RATE, RATE * 2, 2, 16, 0)
+        handle = ctypes.c_void_p()
+        if winmm.waveOutOpen(ctypes.byref(handle), WAVE_MAPPER, ctypes.byref(fmt), None, None, 0) != 0:
+            return
+        size = RATE // 10 * 2  # 100 ms per buffer
+        bufs, hdrs = [], []
+        try:
+            for _ in range(3):
+                noise = array.array("h", (random.randint(-3, 3) for _ in range(size // 2)))
+                buf = ctypes.create_string_buffer(noise.tobytes(), size)
+                hdr = WAVEHDR()
+                hdr.lpData = ctypes.cast(buf, ctypes.c_void_p)
+                hdr.dwBufferLength = size
+                winmm.waveOutPrepareHeader(handle, ctypes.byref(hdr), ctypes.sizeof(hdr))
+                winmm.waveOutWrite(handle, ctypes.byref(hdr), ctypes.sizeof(hdr))
+                bufs.append(buf)
+                hdrs.append(hdr)
+            while time.monotonic() < self._until:
+                for hdr in hdrs:
+                    if hdr.dwFlags & WHDR_DONE:
+                        hdr.dwFlags &= ~WHDR_DONE
+                        winmm.waveOutWrite(handle, ctypes.byref(hdr), ctypes.sizeof(hdr))
+                time.sleep(0.02)
+        finally:
+            winmm.waveOutReset(handle)
+            for hdr in hdrs:
+                winmm.waveOutUnprepareHeader(handle, ctypes.byref(hdr), ctypes.sizeof(hdr))
+            winmm.waveOutClose(handle)
+
+
 class Mic:
     """Start/stop from any thread; read `levels` (display order) from any thread."""
 

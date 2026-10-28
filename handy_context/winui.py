@@ -14,7 +14,7 @@ from ctypes import wintypes
 
 from . import floater as fl
 from .keys import CANCEL, HOLD, LOCKED, PRESS, RELEASE, RightAlt
-from .mic import Mic, mic_in_use
+from .mic import Keepalive, Mic, mic_in_use
 
 user32 = ctypes.WinDLL("user32", use_last_error=True)
 gdi32 = ctypes.WinDLL("gdi32")
@@ -192,6 +192,7 @@ class App:
         self.keys = RightAlt()
         self.floater = fl.Floater()
         self.mic = Mic()
+        self.keepalive = Keepalive()
         self.finalize_until = 0.0
         self.finalize_max_s = 12.0
         # The pill stays small after the key goes down until Windows shows Handy on
@@ -337,6 +338,7 @@ class App:
             self._place()
             self.finalize_until = 0.0
             self.mic_wait_since = time.monotonic()
+            self.keepalive.start()
             send_key(VK_F13, up=False)
             if self.show_floater:
                 self.mic.start()
@@ -344,10 +346,12 @@ class App:
             send_key(VK_F13, up=True)
             if self.on_release:
                 self.on_release()
+            self.keepalive.stop()
             self.mic.stop()
             self.mic_wait_since = None
             self.finalize_until = time.monotonic() + self.finalize_max_s
         elif action == CANCEL:
+            self.keepalive.stop()
             self.mic.stop()
             self.mic_wait_since = None
             self.finalize_until = 0.0
